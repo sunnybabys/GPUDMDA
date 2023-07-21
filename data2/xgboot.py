@@ -17,7 +17,7 @@ unknown_associations = all_associations.loc[all_associations['label'] == 0,:]
 random_positive = all_associations.loc[all_associations['label'] == 2,:]  
 random_positive['label'] = 0
 # p_sample_df = known_associations.drop(random_positive.index.to_list(), axis=0)  
-n_sample_df = unknown_associations.append(random_positive)  # 负样本S+U
+n_sample_df = unknown_associations.append(random_positive)  
 all_samples = known_associations.append(n_sample_df)
 
 
