@@ -12,11 +12,11 @@ f_m = pd.read_csv('./trans_data/data1/nonm_feature.csv',header=None,index_col=No
 
 all_associations = pd.read_csv('./trans_data/data1' + '/S_pair.txt', sep=' ', names=['d', 'm', 'label'])
 
-known_associations = all_associations.loc[all_associations['label'] == 1,:]   #仅为1的正样本，间谍已经被标记好了为2
+known_associations = all_associations.loc[all_associations['label'] == 1,:]   
 unknown_associations = all_associations.loc[all_associations['label'] == 0,:]
-random_positive = all_associations.loc[all_associations['label'] == 2,:]  # 挑选的正样本S，待加入未知样本U中
+random_positive = all_associations.loc[all_associations['label'] == 2,:]  
 random_positive['label'] = 0
-# p_sample_df = known_associations.drop(random_positive.index.to_list(), axis=0)  # 去除挑选的正样本，P-S作为正样本
+# p_sample_df = known_associations.drop(random_positive.index.to_list(), axis=0)  
 n_sample_df = unknown_associations.append(random_positive)  # 负样本S+U
 all_samples = known_associations.append(n_sample_df)
 
