@@ -18,7 +18,7 @@ class CV():
 
     def bance(self, index, type="train"):
         if self.cv == 1:  # 行
-            t = self.inc_matrix.loc[index]  # 取出inc_matrix中对应index的行（即训练集所对应的行，在相互作用矩阵中）
+            t = self.inc_matrix.loc[index]  
         elif self.cv == 2:  # 列
             t = self.inc_matrix.loc[:, index]
         elif self.cv == 3:  # hl
@@ -56,7 +56,7 @@ class CV():
         print('cv1 {}行'.format(self.i))
         lens = self.i
         rkf = RepeatedKFold(n_splits=5, n_repeats=self.n_repeats)
-        for train_index, test_index in rkf.split(list(range(lens))):  # 将列表[0,1...lens-1]分割为5分，即按行索引分5份
+        for train_index, test_index in rkf.split(list(range(lens))):  
             self.trains.append(self.bance(train_index,"train"))
             self.tests.append(self.bance(test_index,"test"))
         return self.trains, self.tests
@@ -85,8 +85,7 @@ class CV():
     def get_cv(cls, cv, n_repeats, inc_matrix):
 
         if cv == 1:
-            trains, tests = cls(cv, n_repeats, inc_matrix).cv_1()  # 初始化CV类，即上面的class CV()
-        elif cv == 2:
+            trains, tests = cls(cv, n_repeats, inc_matrix).cv_1()  
             trains, tests = cls(cv, n_repeats, inc_matrix).cv_2()
         elif cv == 3:
             trains, tests = cls(cv, n_repeats, inc_matrix).cv_3()
