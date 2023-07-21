@@ -24,7 +24,9 @@ Install python3.7 for running this model. And these packages should be satisfied
 
 ## Usage
 Taking HMDAD as an example，default is 5-fold cross validation on microbe-Disease pairs，to run the model：
-> python data1/CV_123.py
+```
+python data1/CV_123.py
+```
 
 The variable "cv" in the “CV. getcv()” function:
  - “1” represents 5-fold cross validation on diseases.
